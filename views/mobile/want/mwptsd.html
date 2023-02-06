@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        *{
+        font-family: 'ubuntu',sans-serif;
+        scroll-behavior: smooth;
+    }
+    
+    
+    html, body {margin: 0;padding: 0;width: 100%; height: 100%;}
+    
+    #board {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        /* background-color: #b4dde4; */
+        background:radial-gradient(circle at 50% 0, 
+             rgba(255,0,0,.2), rgba(255,0,0,0) 70.71%),
+             radial-gradient(circle at 50% 100%, 
+             rgba(38, 60, 241, 0.2), rgba(38,60,241,0) 70.71%),
+             radial-gradient(circle at 0% 50%, 
+             rgba(0, 250, 79, 0.2), rgba(0,250,79,0) 70.71%),
+             radial-gradient(circle at 100% 50%, 
+             rgba(255, 246, 80, 0.2), rgba(255,246,80,0) 70.71%);
+    }
+    
+    .upinfo {
+        /* margin-top: 58px; */
+        text-align: justify;
+        /* text-justify: distribute; */
+        color: black;
+        font-size: 2rem;
+        line-height: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.04rem;
+        padding: 15px;
+      }
+
+      .first {
+        text-align: justify;
+        position: absolute;
+        font-weight: 400 !important;
+        top: 63%;
+        left: 8%;
+        width: 100px;
+        padding: 2px;
+      }
+
+      .second {
+        text-align: center;
+        position: absolute;
+        font-weight: 400 !important;
+        top: 52%;
+        left: 34%;
+        width: 100px;
+        padding: 2px;
+      }
+
+      .third {
+        text-align: justify;
+        position: absolute;
+        font-weight: 400 !important;
+        top: 61%;
+        right: 4%;
+        width: 80px;
+        padding: 2px;
+      }
+
+      .fourth {
+        text-align: center;
+        position: absolute;
+        font-weight: 400 !important;
+        bottom: 18%;
+        left: 34%;
+        width: 100px;
+        padding: 5px;
+      }
+
+      .card {
+        font-size: 16px;
+        text-align: center;
+        color: #008037;
+        font-weight: 500 !important;
+        padding: 0px;
+        letter-spacing: 0.05rem;
+        z-index: 100;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%) scale(0.95);
+        border-radius: 50%;
+        /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2); */
+        background-color: whitesmoke;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-animation: pop-in 0.5s ease;
+        -moz-animation: pop-in 0.5s ease;
+        -ms-animation: pop-in 0.5s ease;
+      }
+
+      .question {
+        font-size: 22px;
+        padding: 10px;
+        /* margin-top: 5px; */
+        font-family: "ubuntu";
+        line-height: 1.5rem;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+        color: #23547b;
+        animation: text-in 0.5s;
+        /* text-justify:inter-word; */
+      }
+
+      .input {
+        z-index: 1;
+        position: absolute;
+        top: 35%;
+        left: 20%;
+        width: 65vw;
+        height: 40vh;
+        font-size: 1rem;
+        line-height: 1rem;
+        font-weight: 300;
+        letter-spacing: 0.07rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .user-input {
+        border: none;
+        appearance: none;
+        background-color: #faf1e3;
+        padding: 12px;
+        border-radius: 50px;
+        outline: none;
+        font-size: 0.7rem;
+        width: 180px;
+        font-weight: 300;
+        margin: 0 0 1rem 0;
+      }
+
+      .user-info {
+        color: black;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05rem;
+        margin-bottom: 0.2rem;
+        margin-top: 1rem;
+      }
+
+      .submit {
+        color: white;
+        font-size: 1.1rem;
+        text-decoration: none;
+        background-color: #1fb4bb;
+        text-align: center;
+        height: 3.5rem;
+        width: 7rem;
+        border-radius: 50px;
+        border: none;
+        font-weight: 500;
+        letter-spacing: 0.1rem;
+        margin-bottom: 1.5rem;
+        left: 100%;
+      }
+
+      .end {
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+      }
+
+      /* Popup container */
+      .popup {
+        cursor: pointer;
+      }
+
+      /* The actual popup (appears on top) */
+      .popup .popuptext {
+        font-size: 12px;
+        visibility: hidden;
+        width: 250px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        line-height: 1rem;
+        border-radius: 6px;
+        padding: 8px 2px;
+        position: absolute;
+        z-index: 1;
+        bottom: 70%;
+        left: 20%;
+        margin-left: 0px;
+      }
+
+      /* Popup arrow */
+      .popup .popuptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+
+      /* Toggle this class when clicking on the popup container (hide and show the popup) */
+      .popup .show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      /* Add animation (fade in the popup) */
+      @-webkit-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media only screen and (max-width: 420px) {
+        .upinfo {
+          /* margin-top: 25px; */
+          font-size: 1rem;
+        }
+
+        .card {
+          background-repeat: no-repeat;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+/* 
+        .first {
+          top: 63%;
+          left: 16%;
+        }
+        .second {
+          top: 52%;
+          left: 37%;
+        }
+        .third {
+          top: 62%;
+          right: 14%;
+        }
+
+        .fourth {
+          bottom: 18%;
+          left: 37%;
+        } */
+      }
+
+      @media only screen and (max-height: 720px) and (max-width: 420px) {
+        .upinfo {
+          /* margin-top: 50px; */
+          font-size: 1rem;
+        }
+        .question {
+        font-size: 22px;
+        padding: 10px;
+        /* margin-top: 20px; */
+        font-family: "ubuntu";
+        line-height: 1.5rem;
+        font-weight: 500;
+        text-align: center;
+        width: 100%;
+        color: #23547b;
+        animation: text-in 0.5s;
+        /* text-justify:inter-word; */
+      }
+        /* .card {
+          width: 100px;
+          height: 100px;
+          top: 58%;
+          left: 50%;
+        }
+
+        .first {
+          margin-top: 40px;
+          top: 51%;
+          left: 16%;
+          width: 100px;
+          padding: 2px;
+        }
+        .second {
+          top: 42%;
+          left: 37%;
+        }
+        .third {
+          margin-top: 40px;
+          top: 49%;
+          right: 10%;
+        }
+
+        .fourth {
+          bottom: 25%;
+          left: 39%;
+        }*/
+      }
+
+      .tool-tip-modal {
+        display: none;
+        opacity: 1;
+        position: absolute; /* Stay in place */
+        z-index: 150; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0, 0.4); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        transition: 1s ease-in;
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+        /* background-color: #faf1e3; */
+        background-color: #fff;
+        font-family: "ubuntu";
+        margin: 45% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+        text-align: justify;
+        word-spacing: 2px;
+        letter-spacing: 0.5px;
+        box-shadow: 2px 2px 4px #000000, 
+            2px 2px 4px #000000;
+      }
+
+      /* The Close Button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .top-nav {
+        padding-bottom: 0rem;
+      }
+
+      .top-nav a img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 11rem;
+      }
+
+      .circle {
+        font: 20px "ubuntu", sans-serif;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        padding: 5px;
+        padding-top: 13px;
+        opacity: 0.7;
+        margin: auto;
+        margin-top: 10px;
+        background-color: transparent;
+        /* border: 3px solid #000; */
+        color: #000;
+        text-align: center;
+      }
+      .circle-text {
+        font: 20px "ubuntu", sans-serif;
+      }
+
+      @-webkit-keyframes pop-in {
+        from {
+          transform: translateX(-50%) translateY(-50%) scale(0);
+        }
+        80% {
+          transform: translateX(-50%) translateY(-50%) scale(1.2);
+        }
+        to {
+          transform: translateX(-50%) translateY(-50%) scale(0.95);
+        }
+      }
+      @-moz-keyframes pop-in {
+        from {
+          transform: translateX(-50%) translateY(-50%) scale(0);
+        }
+        80% {
+          transform: translateX(-50%) translateY(-50%) scale(1.2);
+        }
+        to {
+          transform: translateX(-50%) translateY(-50%) scale(0.95);
+        }
+      }
+
+      @keyframes pop-in {
+        from {
+          transform: translateX(-50%) translateY(-50%) scale(0);
+        }
+        80% {
+          transform: translateX(-50%) translateY(-50%) scale(1.2);
+        }
+        to {
+          transform: translateX(-50%) translateY(-50%) scale(0.95);
+        }
+      }
+      @keyframes text-in {
+        from {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
+    <title>Assessment</title>
+</head>
+<body>
+    <div id="board">
+         <div id="myModal" class="tool-tip-modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>
+            Swipe ( <img src="https://ik.imagekit.io/GoodMind/372-3725136_move-left-right-up-down-arrow-navigate-comments.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675357885210" alt="" width="25px"> ) to answer
+          </p>
+        </div>
+      </div>
+  
+      <div id="board">
+        <nav class="top-nav">
+          <a href="https://www.goodmind.co/" target="_blank">
+            <img
+              src="https://ik.imagekit.io/GoodMind/logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675345705958"
+              alt="Goodmind"
+            />
+          </a>
+        </nav>
+        <div class="circle"><span class="circle-text"></span>/21</div>
+        <div class="upinfo"></div>
+  
+        <div class="choices">
+          <div class="first">
+            Never<br />
+            <!-- ⬅ -->
+          </div>
+          <div class="second">
+            <!-- ⬆ <br /> -->
+            Rarely
+          </div>
+          <div class="third">
+            Often<br />
+            <!-- ➡ -->
+          </div>
+          <div class="fourth">
+            Always<br />
+            <!-- ⬇ -->
+          </div>
+        </div>
+
+        <form class="input" hidden action="/result" method="post">
+            <div class="info">Lastly, please submit your mobile number & email address to receive the assessment result. <br> P.S: we don't spam, use or sell this data. Promise.</div>
+                <input type="text" name="test" id="test-name" value="PTSD" hidden>
+                <input type="text" name="help" id="help-name" value="want" hidden>
+                <input id="clientDate" name="clientDate" type="hidden">
+                <input name="q1" id="q1" hidden/>
+                <input name="q2" id="q2" hidden/>
+                <input name="q3" id="q3" hidden/>
+                <input name="q4" id="q4" hidden/>
+                <input name="q5" id="q5" hidden/>
+                <input name="q6" id="q6" hidden/>
+                <input name="q7" id="q7" hidden/>
+                <input name="q8" id="q8" hidden/>
+                <input name="q9" id="q9" hidden/>
+                <input name="q10" id="q10" hidden/>
+                <input name="q11" id="q11" hidden/>
+                <input name="q12" id="q12" hidden/>
+                <input name="q13" id="q13" hidden/>
+                <input name="q14" id="q14" hidden/>
+                <input name="q15" id="q15" hidden/>
+                <input name="q16" id="q16" hidden/>
+                <input name="q17" id="q17" hidden/>
+                <input name="q18" id="q18" hidden/>
+                <input name="q19" id="q19" hidden/>
+                <input name="q20" id="q20" hidden/>
+
+
+
+                <li class="contact-num">
+                    <label for="phone" class="user-info">Mobile Number</label> <br>
+                    <input type="tel" class="user-input" id="phone" name="phone" maxlength="20" oninvalid="this.setCustomValidity('Please enter mobile number correctly')"
+                    oninput="this.setCustomValidity('')" required >
+            </li>
+            <li class="email">
+                    <label for="email" class="user-info">Email Address</label> <br>
+                    <input type="email" id="email" name="email" class="user-input" maxlength="40" required oninvalid="this.setCustomValidity('Please enter email correctly')"
+                    oninput="this.setCustomValidity('')">
+            </li> 
+                <div class="end">
+                    <input type="submit" class="submit" id="submit">
+                </div>
+        </form>
+    </div>
+
+    <div hidden class="q">
+        <div class="count">20</div>
+        <div class="q1">Do you get flashbacks of your trauma?</div>
+        <div class="q2">Do you get nightmares?</div>
+        <div class="q3">Do you experience physical sensations such as pain, sweat, nausea, or trembling?</div>
+        <div class="q4">Do you experience extreme alertness sometimes and other times it's hard to concentrate?</div>
+        <div class="q5">Disturbed or lack of sleep?</div>
+        <div class="q6">Easily irritable or angry?</div>
+        <div class="q7">Are you trying to avoid your feelings or memories?</div>
+        <div class="q8">Trying to keep yourself busy to avoid remembrance of the trauma?</div>
+        <div class="q9">Avoiding anything (people or situation) that reminds you of trauma?</div>
+        <div class="q10">Being unable to remember details of what happened?</div>
+        <div class="q11">Feeling emotionally numb and detached from your feelings?</div>
+        <div class="q12">Feeling physically numb or detached from your body?</div>
+        <div class="q13">Being unable to express affection / care / love / concern lately?</div>
+        <div class="q14">Doing things that could be self-destructive or reckless?(or felt suicidal)</div>
+        <div class="q15">Difficulty in trusting people?</div>
+        <div class="q16">Have a feeling that nobody understands you?</div>
+        <div class="q17">Do you blame yourself for what has happened?</div>
+        <div class="q18">Experience feelings of anger, sadness, guilt, and shame?</div>
+        <div class="q19">Having difficulty with some everyday tasks</div>
+        <div class="q20">Do you feel that you have no reason or motive in life to live for?</div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script>
+        $("#clientDate").val(new Date());
+        var counter = 1;
+        document.querySelector(".circle-text").innerHTML = counter;
+        let max = Number(document.querySelector(".count").innerHTML);
+        let ct = 2;
+        let ans = [];
+  
+        var modal = document.getElementById("myModal");
+  
+        // Get the button that opens the modal
+        //   var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+  
+        // When the user clicks on the button, open the modal
+        //   btn.onclick = function () {
+        //     modal.style.display = "block";
+        //   };
+  
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
+        };
+        window.onload = function () {
+          modal.style.display = "block";
+        };
+        setTimeout(() => {
+          modal.style.opacity = "0";
+          // modal.style.display = "none"
+        }, 4000);
+        setTimeout(() => {
+          modal.style.display = "none";
+          // modal.style.display = "none"
+        }, 5000);
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+  
+        class Carousel {
+          constructor(element) {
+            this.board = element;
+  
+            // add first card programmatically
+            this.push(1);
+  
+            // handle gestures
+            this.handle();
+          }
+  
+          handle() {
+            // list all cards
+            this.cards = this.board.querySelectorAll(".card");
+  
+            // get top card
+            this.topCard = this.cards[this.cards.length - 1];
+  
+            // get next card
+            this.nextCard = this.cards[this.cards.length - 2];
+  
+            // if at least one card is present
+            if (this.cards.length > 0) {
+              // set default top card position and scale
+              this.topCard.style.transform =
+                "translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)";
+  
+              // destroy previous Hammer instance, if present
+              if (this.hammer) this.hammer.destroy();
+  
+              // listen for tap and pan gestures on top card
+              this.hammer = new Hammer(this.topCard);
+              this.hammer.add(new Hammer.Tap());
+              this.hammer.add(
+                new Hammer.Pan({
+                  position: Hammer.position_ALL,
+                  threshold: 0,
+                })
+              );
+  
+              // pass events data to custom callbacks
+              this.hammer.on("tap", (e) => {
+                this.onTap(e);
+              });
+              this.hammer.on("pan", (e) => {
+                this.onPan(e);
+              });
+            }
+          }
+  
+          onTap(e) {
+            // get finger position on top card
+            let propX =
+              (e.center.x - e.target.getBoundingClientRect().left) /
+              e.target.clientWidth;
+  
+            // // get rotation degrees around Y axis (+/- 15) based on finger position
+            // let rotateY = 15 * (propX < 0.05 ? -1 : 1)
+  
+            // enable transform transition
+            this.topCard.style.transition = "transform 100ms ease-out";
+  
+            // apply rotation around Y axis
+            this.topCard.style.transform =
+              "translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)";
+  
+            // wait for transition end
+            setTimeout(() => {
+              // reset transform properties
+              this.topCard.style.transform =
+                "translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)";
+            }, 100);
+          }
+  
+          onPan(e) {
+            if (!this.isPanning) {
+              this.isPanning = true;
+  
+              // remove transition properties
+              this.topCard.style.transition = null;
+              if (this.nextCard) this.nextCard.style.transition = null;
+  
+              // get top card coordinates in pixels
+              let style = window.getComputedStyle(this.topCard);
+              let mx = style.transform.match(/^matrix\((.+)\)$/);
+              this.startPosX = mx ? parseFloat(mx[1].split(", ")[4]) : 0;
+              this.startPosY = mx ? parseFloat(mx[1].split(", ")[5]) : 0;
+  
+              // get top card bounds
+              let bounds = this.topCard.getBoundingClientRect();
+  
+              // get finger position on top card, top (1) or bottom (-1)
+              this.isDraggingFrom =
+                e.center.y - bounds.top > this.topCard.clientHeight / 2 ? -1 : 1;
+            }
+  
+            // get new coordinates
+            let posX = e.deltaX + this.startPosX;
+            let posY = e.deltaY + this.startPosY;
+  
+            // get ratio between swiped pixels and the axes
+            let propX = e.deltaX / this.board.clientWidth;
+            let propY = e.deltaY / this.board.clientHeight;
+  
+            // get swipe direction, left (-1) or right (1)
+            let dirX = e.deltaX < 0 ? -1 : 1;
+  
+            // get degrees of rotation, between 0 and +/- 45
+            let deg = this.isDraggingFrom * dirX * Math.abs(propX) * 45;
+  
+            // get scale ratio, between .95 and 1
+            let scale = (95 + 5 * Math.abs(propX)) / 100;
+  
+            // move and rotate top card
+            this.topCard.style.transform =
+              "translateX(" +
+              posX +
+              "px) translateY(" +
+              posY +
+              "px) rotate(0deg) rotateY(0deg) scale(1)";
+  
+            // scale up next card
+            if (this.nextCard)
+              this.nextCard.style.transform =
+                "translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(" +
+                scale +
+                ")";
+  
+            if (e.isFinal) {
+              this.isPanning = false;
+  
+              let successful = false;
+  
+              // set back transition properties
+              this.topCard.style.transition = "transform 200ms ease-out";
+              if (this.nextCard)
+                this.nextCard.style.transition = "transform 100ms linear";
+  
+              // check threshold and movement direction
+              if (propX > 0.15 && e.direction == Hammer.DIRECTION_RIGHT) {
+                ans.push(3);
+                counter++;
+                successful = true;
+                // get right border position
+                posX = this.board.clientWidth;
+              } else if (propX < -0.15 && e.direction == Hammer.DIRECTION_LEFT) {
+                ans.push(1);
+                counter++;
+                successful = true;
+                // get left border position
+                posX = -(this.board.clientWidth + this.topCard.clientWidth);
+              } else if (propY < -0.1 && e.direction == Hammer.DIRECTION_UP) {
+                ans.push(2);
+                counter++;
+                successful = true;
+                // get top border position
+                posY = -(this.board.clientHeight + this.topCard.clientHeight);
+              } else if (propY > 0.1 && e.direction == Hammer.DIRECTION_DOWN) {
+                ans.push(4);
+                counter++;
+                successful = true;
+                // get bottom border position
+                posY = this.board.clientHeight + this.topCard.clientHeight;
+              }
+  
+              if (successful) {
+                // throw card in the chosen direction
+                this.topCard.style.transform =
+                  "translateX(" +
+                  posX +
+                  "px) translateY(" +
+                  posY +
+                  "px) rotate(0deg)";
+                document.querySelector(".circle-text").innerHTML = counter;
+                // wait transition end
+                setTimeout(() => {
+                  // remove swiped card
+                  this.board.removeChild(this.topCard);
+                  // add new card
+                  this.push(ct);
+                  ct++;
+                  // handle gestures on new top card
+                  this.handle();
+                }, 200);
+              } else {
+                // reset cards position and size
+                this.topCard.style.transform =
+                  "translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)";
+                if (this.nextCard)
+                  this.nextCard.style.transform =
+                    "translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(0.95)";
+              }
+            }
+          }
+  
+          push(count) {
+            if (count > max) {
+              $(".choices").attr("hidden", true);
+              setTimeout(renderInput, 100);
+              return;
+            }
+  
+            let card = document.createElement("div");
+            card.classList.add("card");
+            let qtn = document.querySelector(`.q${count}`).innerHTML;
+            card.innerHTML = "SWIPE";
+            let quest = document.querySelector(".upinfo");
+            //   if(counter == 11) quest.innerHTML = ""
+            if ($("#test-name").val() == "Depression" && `q${count}` == "q6") {
+              quest.innerHTML = `<div class="question" style="font-size:15px;">${qtn}</div>`;
+            } else if (
+              $("#test-name").val() == "OCD" &&
+              (`q${count}` == "q3" || `q${count}` == "q6")
+            ) {
+              quest.innerHTML = `<div class="question" style="font-size:17px">${qtn}</div>`;
+            } else if (
+              $("#test-name").val() == "PTSD" &&
+              $("#help-name").val() == "want" &&
+              `q${count}` == "q1"
+            ) {
+              quest.innerHTML = `<div class="question popup" onclick="myFunction(1)">${qtn} 🛈 <span class="popuptext" id="myPopup1">experience emotions that you felt during trauma? Able to see videos or Images of what happened? Experience physical sensations such as pain or pressure that you experienced during the trauma? Notice sounds/noises, smell or tastes that remind you of the trauma</span></div>`;
+            } else if (
+              $("#test-name").val() == "PTSD" &&
+              $("#help-name").val() == "want" &&
+              `q${count}` == "q19"
+            ) {
+              quest.innerHTML = `<div class="question popup" onclick="myFunction(2)">${qtn} 🛈 <span class="popuptext" id="myPopup2">such as looking after yourself, liking your job, maintaining friendships/ relationships, making decisions, remembering things etc.</span></div>`;
+            } else if (
+              $("#test-name").val() == "PTSD" &&
+              $("#help-name").val() == "to" &&
+              `q${count}` == "q1"
+            ) {
+              quest.innerHTML = `<div class="question popup" onclick="myFunction(1)">${qtn} 🛈 <span class="popuptext" id="myPopup1">experience emotions that he/she felt during trauma? Able to see videos or Images of what happened? Experience physical sensations such as pain or pressure that he/she experienced during the trauma? Notices sounds/noises, smells, or tastes that remind him/her of the trauma</span></div>`;
+            } else if (
+              $("#test-name").val() == "PTSD" &&
+              $("#help-name").val() == "to" &&
+              `q${count}` == "q19"
+            ) {
+              quest.innerHTML = `<div class="question popup" onclick="myFunction(2)">${qtn} 🛈 <span class="popuptext" id="myPopup2">such as looking after himself/herself, liking his/her job, maintaining friendships/ relationships, making decisions, remembering things, coping with change, or simply enjoying his/her leisure time, etc?</span></div>`;
+            } else {
+              quest.innerHTML = `<div class="question">${qtn}</div>`;
+            }
+  
+            this.board.insertBefore(card, this.board.firstChild);
+          }
+        }
+  
+        let board = document.querySelector("#board");
+        let carousel = new Carousel(board);
+  
+        function renderInput() {
+          ans.forEach((ele, index) => {
+            $(`#q${index + 1}`).val(ele);
+          });
+          $(".input").removeAttr("hidden");
+          let removingLast = document.querySelector(".upinfo");
+          removingLast.style.display = "none";
+        }
+  
+        function myFunction(n) {
+          var popup = document.getElementById(`myPopup${n}`);
+          popup.classList.toggle("show");
+        }
+      </script>
+</body>
+</html>

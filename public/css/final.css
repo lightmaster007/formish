@@ -1,0 +1,74 @@
+*{
+    font-family: 'ubuntu',sans-serif;
+    scroll-behavior: smooth;
+    letter-spacing: 0.05rem;
+}
+
+body{
+    max-width: 100%;
+
+    background-color: #b4dde4;
+}
+
+.top-nav{
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+.container{
+    background-color: #faf1e3;
+    padding: 3rem;
+    border-radius: 50px;
+    
+
+} 
+
+.row .col{
+    height: 4rem;
+}
+
+.form-control{
+    height: 4rem;
+    background-color: #1fb4bb;
+    color: white;
+}
+
+.form-control:hover{
+    background-color: #b4dde4;
+}
+.form-control:focus{
+    background-color: #1fb4bb;
+}
+
+@media only screen and (max-width: 1000px) {
+    
+    body{
+        max-width: 100%;
+    }
+    .container{
+        /* margin-left: 8vw; */
+        width: 85%;
+        
+        margin: 20px 30px;
+        padding: 1.5rem;
+        
+    }
+
+    .top-nav{
+        padding-bottom: 0.5rem;
+
+    }
+
+    .fs-3{
+        font-size: 1.2rem !important;
+    }
+
+    .fs-2{
+        font-size: 1.3rem !important;
+    }
+
+    .form-control{
+        font-size: 0.8rem;
+    }
+
+} 

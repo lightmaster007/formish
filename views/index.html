@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,500;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "ubuntu", sans-serif;
+        scroll-behavior: smooth;
+        letter-spacing: 0.05rem;
+      }
+
+      body {
+        margin: auto;
+        /* padding-left: 5%; */
+        background-color: #faf1e3;
+      }
+
+      .top-nav {
+        padding-bottom: 0rem;
+      }
+
+      .top-nav a img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 14rem;
+      }
+      h1 {
+        text-align: center;
+        font-weight: 300;
+      }
+
+      .top-text{
+        font-size: 25px ;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        margin: 1rem 0 1rem 0;
+        flex-wrap: wrap;
+      }
+
+      .break {
+        flex-basis: 100%;
+        height: 0;
+      }
+
+      .radio,
+      .want,
+      .to {
+        font-size: 1rem;
+        display: inline-grid;
+        max-width: 90%;
+        grid-auto-rows: 1fr;
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-bottom: 2rem;
+        row-gap: 1rem;
+      }
+      .want,
+      .to {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .radio span,
+      .want span,
+      .to span {
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-sizing: border-box;
+        width: 90%;
+        height: 70%;
+        padding: 20px;
+        background: #b4dde4;
+        transition: background 0.1s ease-in-out;
+        box-shadow: 2px 2px;
+      }
+
+      .radio input,
+      .want input,
+      .to input {
+        max-width: 200px;
+        position: fixed;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .radio input:checked + span,
+      .want input:checked + span,
+      .to input:checked + span {
+        background: #1fb4bb;
+        color: white;
+        box-shadow: none;
+      }
+
+      .radio input:focus + span,
+      .want input:focus + span,
+      .to input:focus + span {
+        outline: 0px;
+        box-shadow: none;
+      }
+
+      .radio span:hover,
+      .want span:hover,
+      .to span:hover {
+        background: #417689;
+        color: white;
+        border-color: #417689;
+        box-shadow: none;
+      }
+
+      .hidden {
+        opacity: 0 !important;
+        overflow: hidden !important;
+        max-height: 0 !important;
+      }
+
+      .show {
+        max-height: 9999999px;
+        margin-top: 2rem;
+        transition-delay: 0.5s;
+        transition: all 0.5s ease-in;
+      }
+
+      @media only screen and (max-width: 1400) {
+        .top-nav a img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 9rem;
+        }
+
+        h1 {
+          font-size: 1.5rem !important;
+        }
+
+        .radio {
+          grid-template-columns: repeat(2, minmax(0, 350px));
+          justify-content: center;
+          gap: 0.4rem;
+          border-radius: 20px;
+          font-size: 1rem;
+        }
+
+        .want,
+        .to {
+          grid-template-columns: repeat(1, minmax(0, 350px));
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 0.1rem !important;
+          padding: 1px;
+          font-size: 1rem;
+        }
+
+        .want span {
+          font-size: 1rem;
+          padding: 20px;
+        }
+      }
+
+      @media only screen and (max-width: 880px) {
+        body {
+          padding: 20px;
+          /* margin-top: 25vh; */
+        }
+
+        .top-nav a img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 14rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h1.top-text {
+          font-size: 1rem;
+        }
+
+        .radio {
+          grid-template-columns: repeat(2, minmax(0, 350px));
+          justify-content: center;
+          gap: 0.4rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+        }
+
+        .want,
+        .to {
+          grid-template-columns: repeat(1, minmax(0, 350px));
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 0.1rem !important;
+          padding: 1px;
+        }
+
+        .want span {
+          font-size: 0.8rem;
+          padding: 10px;
+          height: 50px;
+          margin-bottom: 10px;
+        }
+
+        .to span {
+          font-size: 0.8rem;
+          padding: 10px;
+          margin-bottom: 10px;
+        }
+
+        .radio span,
+        .want span,
+        .to span {
+          width: 100%;
+          border-radius: 30px;
+        }
+      }
+    </style>
+    <title>Assessment</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ML3YFCDWM1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-ML3YFCDWM1");
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "d4z5gphvef");
+    </script>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a href="https://www.goodmind.co/" target="_blank">
+        <img
+          src="https://ik.imagekit.io/GoodMind/logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675345705958"
+          alt="Goodmind"
+        />
+      </a>
+    </nav>
+    <h1 class="top-text">
+      Hey there! <br> Have you been bothered by any of the following problems over
+      the last 2 weeks
+    </h1>
+    <div class="container">
+      <!-- <div class="radio">
+            <label><input name="help" class="first" type="radio" id="want"/><span>I want help</span></label>
+            <label><input name="help" class="second" type="radio" id="to"/><span>I want to assist</span></label>
+        </div> -->
+      <div class="break"></div>
+      <div class="want" id="first">
+        <form action="/waxt" method="post">
+          <label
+            ><input name="help" type="submit" /><span
+              >Feeling tensed and nervous</span
+            ></label
+          >
+        </form>
+        <form action="/wdpr" method="post">
+          <label
+            ><input name="help" type="submit" /><span
+              >Don't feel happy anymore</span
+            ></label
+          >
+        </form>
+        <form action="/wpsd" method="post">
+          <label
+            ><input name="help" type="submit" /><span
+              >Getting flashbacks or trauma</span
+            ></label
+          >
+        </form>
+        <form action="/wrls" method="post">
+          <label
+            ><input name="help" type="submit" /><span
+              >Have a problem with family/friend/spouse</span
+            ></label
+          >
+        </form>
+        <form action="/wsts" method="post">
+          <label
+            ><input name="help" type="submit" /><span
+              >Feeling stressed</span
+            ></label
+          >
+        </form>
+        <form action="/wobs" method="post">
+          <label
+            ><input name="help" type="submit" /><span
+              >Feeling restless or get unwanted thoughts</span
+            ></label
+          >
+        </form>
+      </div>
+      <!-- <div class="to hidden">
+            <form action="/taxt" method="post">
+                <label><input name="help" type="submit"/><span>They feel nervous </span></label>
+            </form>
+            <form action="/tdpr" method="post">
+                <label><input name="help" type="submit"/><span>They don't seem  happy anymore</span></label>
+            </form>
+            <form action="/tpsd" method="post">
+                <label><input name="help" type="submit"/><span>Are they getting flashbacks of a trauma?</span></label>
+            </form>
+            <form action="/trls" method="post">
+                <label><input name="help" type="submit"/><span>Are they having problems with a family/ friend/spouse?</span></label>
+            </form>
+            <form action="/tsts" method="post">
+                <label><input name="help" type="submit"/><span>Are they tensed?</span></label>
+            </form>
+            <form action="/tobs" method="post">
+                <label><input name="help" type="submit"/><span>Do They feel extremely restless or get unwanted thoughts?</span></label>
+            </form>
+
+        </div> -->
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#want").click(function () {
+        $("div.want").removeClass("hidden");
+        $("div.want").addClass("show");
+        $("div.to").addClass("hidden");
+        $("div.to").removeClass("show");
+      });
+
+      $("#to").click(function () {
+        $("div.to").removeClass("hidden");
+        $("div.to").addClass("show");
+        $("div.want").addClass("hidden");
+        $("div.want").removeClass("show");
+      });
+
+      $(".first").click(function (event) {
+        $("html, body").animate({ scrollTop: "+=270px" }, 100);
+      });
+
+      $(".second").click(function (event) {
+        $("html, body").animate({ scrollTop: "+=300px" }, 100);
+      });
+
+      let width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+      $("input[name=help]").val(width);
+    </script>
+
+    <script
+      type="application/javascript"
+      src="https://sdki.truepush.com/sdk/v2.0.4/app.js"
+      async
+    ></script>
+    <script>
+      var truepush = window.truepush || [];
+
+      truepush.push(function () {
+        truepush.Init(
+          {
+            id: "63cd7e76892d8e034dcd61c5",
+          },
+          function (error) {
+            if (error) console.error(error);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>

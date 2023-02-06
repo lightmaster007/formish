@@ -1,0 +1,471 @@
+*{
+    font-family: 'ubuntu',sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+
+body{
+    max-width: 100vw;
+    margin: auto;
+    padding: 20px;
+    background-color: #b4dde4;
+}
+
+
+.top-nav{
+    
+    padding-bottom: 20px;
+    margin-top:2rem;
+}
+
+.top-nav a img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10rem;
+}
+
+
+.container{
+    margin: 0 auto 1rem auto;
+    padding: 5px;
+}
+
+.container .info{
+    color: black;
+	font-size: 1.15rem;
+	line-height: 0.9rem;
+	font-weight: 300;
+	letter-spacing: 0.04rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+
+
+.card{
+    letter-spacing: 0.03rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: #faf1e3;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 80px;
+    padding-left: 100px;
+    width: 65vw;
+    height: 69vh !important;
+    border-radius: 20px;
+    margin: 1.5rem auto 10px auto;
+    min-height:400px !important;
+}
+
+
+
+.question{
+    color: black;
+	font-size: 1.15rem;
+	font-weight: normal;
+	letter-spacing: 0.05rem;
+    line-height: 1.3rem;
+    margin-bottom: 0.5rem;
+    padding: 0 20px;
+    text-align:center;
+    text-shadow: 0.5px 0.5px;
+}
+
+.radio{
+    font-size: 1.11rem;
+    display: inline-grid;
+    max-width: 1100px;
+    width: 100%;
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+    line-height: 0;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+} 
+
+
+
+.radio input {
+    max-width: 500px;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+
+
+.radio span {
+    line-height: 0.1rem;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 100px;
+    height: 75%;
+    padding: 30px 10px;
+    font-weight: 300;
+    background: #b4dde4;
+    transition: background .1s ease-in-out;
+    box-shadow: 2px 2px;
+}
+
+
+.radio input:checked + span {
+    
+    background: #1fb4bb;
+    color: white;
+    box-shadow: none;
+}
+
+.radio input:focus + span {
+    outline:0px;
+    box-shadow: none;
+}
+
+.radio span:hover {
+    background: #62a7c0;
+    color: white;
+    box-shadow: none;
+    border-color: #417689;
+}
+
+
+.req{
+    text-align: center;
+    color: black;
+	font-size: 1.15rem;
+	line-height: 1.5rem;
+	font-weight: 400;
+	letter-spacing: 0.04rem;
+    margin-bottom: 0.5rem;
+}
+
+
+
+.user-info{
+    color: black;
+	font-size: 1.3rem;
+	line-height: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
+}
+
+
+.user-input{
+    border: none;
+    appearance: none;
+    background-color: #b4dde4;
+    padding: 12px;
+    border-radius: 50px;
+    outline: none;
+    font-size: 1rem;
+    width: 400px;
+    font-weight: 300;
+    margin: 0rem 0 1rem 0;
+}
+
+
+
+.submit{
+    align-items: center;
+    color: white;
+	font-size: 2rem;
+    text-decoration: none;
+    background-color: #1fb4bb;
+    text-align: center;
+    height: 3.2rem;
+    width: 10rem;
+    border-radius: 50px;
+    border: none;
+	font-weight: 500;
+	letter-spacing: 0.05rem;
+    margin-bottom: 0.1rem;
+    margin-top: 0rem;
+}
+
+
+.last{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.15rem;
+}
+
+
+
+.submit:hover{
+    border: 1px solid #1A6C7A;
+    background-color: #1A6C7A;
+    cursor: pointer;
+}
+
+
+.left{
+    width: 90px;
+    position: absolute;
+    left: -6%;
+    bottom: 42%;
+    margin: -30px;
+    transition: transform 0.1s;
+}
+
+.right{
+    width: 90px;
+    position: absolute;
+    right: -6%;
+    bottom: 42%;
+    margin: -30px;
+    transition: transform 0.1s;
+}
+
+.left:hover,.right:hover{
+    transform: scale(1.2);
+}
+
+
+
+
+
+@media only screen and (max-width: 1500px) {
+
+   
+    
+    .top-nav a img{
+        width: 6rem;
+    }
+
+.card{
+    padding: 20px 40px;
+    width: 75vw !important;
+    height: 79vh !important;
+}
+
+.container .info{
+    font-size: 1rem;
+    line-height: 0.9rem;
+}
+
+.question{
+	font-size: 0.95rem;
+    letter-spacing: 0.01rem;
+    line-height: 1.1rem;
+    margin-bottom: 0.2rem;
+    text-shadow: 0px 0px;
+}
+
+
+.radio {
+    font-size: 0.85rem;
+    gap: 0.08rem;
+    height: 70%;
+} 
+
+
+.radio span {
+    margin: auto;
+    width: 90%;
+    height: 80%;
+    line-height: 12px;
+}
+
+.req{
+	font-size: 0.9rem;
+	line-height: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.01rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-info{
+	font-size: 1.1rem;
+	line-height: 1rem;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
+    margin-top: 12px;
+
+}
+
+.user-input{
+    font-size: 1.1rem !important;
+    width: 200px !important;
+    margin: 0 0 0.2rem 0;
+}
+
+.submit{
+	font-size: 1.8rem;
+    height: 3.2rem !important;
+    width: 9rem;
+    border-radius: 50px;
+	letter-spacing: 0.05rem;
+    margin-bottom: 0.1rem;
+    margin-top: 12px !important;
+}
+
+
+.last{
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.left{
+    width: 50px;
+    position: absolute;
+    left: -4%;
+    bottom: 49%;
+    margin: -40px;
+}
+
+.right{
+    width: 50px;
+    position: absolute;
+    right: -4%;
+    bottom: 49%;
+    margin: -40px;
+}
+
+
+    .container .info{
+        font-size: 1rem;
+        line-height: 0.9rem;
+    }
+        
+    .card{
+        padding: 30px 10px 10px 10px;
+        letter-spacing: 0.05rem;
+        width: 80vw;
+        height: 35vh;
+        min-height:310px !important;
+    }
+
+
+
+
+.radio span {
+    border-radius: 50px;
+    min-width: 70px;
+    height: 80%;
+}
+
+
+
+
+
+
+.last{
+    font-size: 1rem;
+}
+
+}  
+
+@media only screen and (max-width: 430px) {
+
+.container .info{
+    font-size: 0.9rem;
+    line-height: 0.75rem;
+}
+
+.container .info p{
+    margin: 5px 0 ;
+}
+
+.card{
+    height: 85vh !important;
+}
+
+.question{
+	font-size: 0.8rem;
+    line-height: 1rem;
+    margin-bottom: 0.1rem;
+    text-shadow: 0px 0px;
+}
+
+
+.radio {
+    font-size: 0.8rem;
+    gap: 0.08rem;
+    height: 70%;
+} 
+
+
+.radio span {
+    font-size: 13px;
+    margin: auto;
+    width: 95%;
+    height: 65%;
+    line-height: 12px;
+    letter-spacing: 0;
+}
+
+    
+
+
+.req{
+    text-align: justify;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-info{
+	font-size: 1.1rem;
+	line-height: 0.5rem;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
+    margin-top: 12px;
+}
+
+.user-input{
+    font-size: 1rem !important;
+    width: 180px !important;
+    margin: 0 0 0.2rem 0;
+    height: 40px;
+}
+
+.submit{
+	font-size: 1.6rem;
+    height: 3.2rem !important;
+    width: 7rem;
+    border-radius: 50px;
+	letter-spacing: 0.05rem;
+    margin-bottom: 0.1rem;
+    margin-top: 12px !important;
+}
+
+
+
+.left{
+    width: 40px;
+    position: absolute;
+    left: 1%;
+    bottom: 49%;
+    margin: -40px;
+}
+
+.right{
+    width: 40px;
+    position: absolute;
+    right: 1%;
+    bottom: 49%;
+    margin: -40px;
+}
+
+
+    
+        
+    .card{
+        padding: 30px 10px 10px 10px;
+        letter-spacing: 0.05rem;
+        width: 80vw;
+        height: 35vh;
+        min-height:310px !important;
+    }
+
+    .last{
+        font-size: 1rem;
+    }
+
+}

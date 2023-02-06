@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ubuntu',sans-serif;
+    scroll-behavior: smooth;
+    letter-spacing: 0.05rem;
+}
+
+body{
+    margin: auto;
+    padding-left: 5%;
+    background-color: #faf1e3;
+}
+
+.top-nav{
+    margin-top: 5rem;
+    margin-right: 10% ;
+    padding-bottom: 4rem;
+}
+
+.top-nav a img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 13rem;
+}
+
+h1{
+    text-align: center;
+    padding-right: 10%;
+    font-weight: 300;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 1rem 10% 1rem 0;
+    flex-wrap: wrap;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+
+
+
+.radio,.want,.to{
+    font-size: 1.2rem;
+    display: inline-grid;
+    max-width: 100%;
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 2rem;
+    row-gap: 2rem;
+    
+} 
+.want,.to{
+    grid-template-columns: repeat(3, minmax(0,1fr)) ;
+}
+
+
+
+
+.radio span,.want span, .to span{
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 90%;
+    padding: 20px;
+    background: #b4dde4;
+    transition: background .1s ease-in-out;
+    box-shadow: 2px 2px;
+}
+
+.radio input ,.want input,.to input{
+    max-width: 200px;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+} 
+
+.radio input:checked + span,.want input:checked + span,.to input:checked + span {
+    
+    background: #1fb4bb;
+    color: white;
+    box-shadow:none;
+}
+
+.radio input:focus + span,.want input:focus + span,.to input:focus + span {
+    outline:0px;
+    box-shadow:none;
+}
+
+.radio span:hover,.want span:hover,.to span:hover {
+    background: #417689;
+    color: white;
+    border-color: #417689;
+    box-shadow:none;
+}
+
+.hidden{
+    opacity: 0 !important;
+    overflow:hidden !important;
+    max-height: 0 !important;
+    
+}
+
+.show{
+    max-height: 9999999px;
+    margin-top: 2rem;
+    transition-delay: 0.5s;
+    transition: all 0.5s ease-in;
+}
+
+@media only screen and (max-width: 1400) {
+    .top-nav a img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 9rem;
+    }
+
+    h1{
+        font-size: 1.5rem !important;
+    }
+
+    .radio {
+
+        grid-template-columns: repeat(2,minmax(0, 350px));
+        justify-content: center;
+        gap: 0.4rem;
+        border-radius: 20px;
+        font-size: 1rem;
+        
+    }
+
+    .want,.to{
+        grid-template-columns: repeat(1,minmax(0,350px));
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.1rem !important;
+        padding: 1px;
+        font-size: 1rem;
+    }
+
+    .want span{
+        font-size: 1rem;
+        padding: 20px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 880px) {
+    body{
+        margin-top: 25vh;
+    }
+
+    .top-nav a img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 9rem;
+    }
+
+    h1{
+        font-size: 1.5rem !important;
+    }
+
+    .radio {
+        grid-template-columns: repeat(2,minmax(0, 350px));
+        justify-content: center;
+        gap: 0.4rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    .want,.to{
+        grid-template-columns: repeat(1,minmax(0,350px));
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.1rem !important;
+        padding: 1px;
+    }
+
+    .want span{
+        font-size: 0.8rem;
+        padding: 10px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    .to span{
+        font-size: 0.8rem;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    
+    
+    .radio span,.want span, .to span{
+        width: 100%;
+        border-radius: 30px;
+    }
+    
+}

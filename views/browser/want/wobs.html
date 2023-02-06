@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,500;0,700;1,700&display=swap" rel="stylesheet">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        *{
+    font-family: 'ubuntu',sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+html, body {margin: 0;padding: 0;width: 100%; }
+
+
+body{
+    max-width: 100vw;
+    margin: auto;
+    padding: 20px;
+    background-color: #b4dde4;
+}
+
+.top-nav{
+    
+    padding-bottom: 20px;
+    margin-top:1.5rem;
+}
+
+.top-nav a img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10rem;
+}
+
+
+.container{
+    margin: 0 auto 1rem auto;
+    padding: 5px;
+}
+
+.container .info{
+    color: black;
+	font-size: 1.2rem;
+	line-height: 0.5rem;
+	font-weight: 300;
+	letter-spacing: 0.04rem;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+.card{
+    padding: 50px 50px 10px 50px;
+    letter-spacing: 0.05rem;
+    width: 65vw;
+    height: 45vh;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    background-color: #faf1e3;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 2rem auto 10px auto;
+    min-height:400px !important;
+}
+
+
+.question{
+    color: black;
+	font-size: 1.4rem;
+	font-weight: normal;
+	letter-spacing: 0.05rem;
+    line-height: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0 20px;
+    text-align:center;
+}
+
+/* Popup container */
+.popup {
+    cursor: pointer;
+  }
+  
+  /* The actual popup (appears on top) */
+  .popup .popuptext {
+    font-size: 18px;
+    visibility: hidden;
+    width: 400px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 2px;
+    position: absolute;
+    z-index: 1;
+    bottom: 90%;
+    left: 50%;
+    margin-left: 0px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class when clicking on the popup container (hide and show the popup) */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+.radio {
+    font-size: 1.2rem;
+    display: inline-grid;
+    max-width: 1100px;
+    width: 100%;
+    grid-auto-rows: 1fr;
+    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+} 
+
+
+.radio input {
+    max-width: 500px;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.radio span {
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 100px;
+    height: 80%;
+    padding: 30px;
+    font-weight: 300;
+    background: #b4dde4;
+    transition: background .1s ease-in-out;
+    box-shadow: 2px 2px;
+}
+
+.radio input:checked + span {
+    
+    background: #1fb4bb;
+    color: white;
+    box-shadow: none;
+}
+
+.radio input:focus + span {
+    outline:0px;
+    box-shadow: none;
+}
+
+.radio span:hover {
+    background: #62a7c0;
+    color: white;
+    box-shadow: none;
+    border-color: #417689;
+}
+
+.req{
+    color: black;
+	font-size: 1.5rem;
+	line-height: 1.6rem;
+	font-weight: 300;
+	letter-spacing: 0.04rem;
+    margin-bottom: 0.5rem;
+}
+
+.q11{
+    text-align: center;
+}
+
+.user-info{
+    color: black;
+	font-size: 1.4rem;
+	line-height: 2rem;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
+
+}
+
+.user-input{
+    border: none;
+    appearance: none;
+    background-color: #b4dde4;
+    padding: 12px;
+    border-radius: 50px;
+    outline: none;
+    font-size: 1rem;
+    width: 400px;
+    font-weight: 300;
+    margin: 0rem 0 1rem 0;
+}
+
+
+
+
+
+.submit{
+    align-items: center;
+    color: white;
+	font-size: 2rem;
+    text-decoration: none;
+    background-color: #1fb4bb;
+    text-align: center;
+    height: 3.2rem;
+    width: 10rem;
+    border-radius: 50px;
+    border: none;
+	font-weight: 500;
+	letter-spacing: 0.05rem;
+    margin-bottom: 0.1rem;
+    margin-top: 0rem;
+}
+
+
+.last{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+
+
+.submit:hover{
+    border: 1px solid #1A6C7A;
+    background-color: #1A6C7A;
+    cursor: pointer;
+}
+
+
+.left{
+    width: 90px;
+    position: absolute;
+    left: -6%;
+    bottom: 42%;
+    margin: -30px;
+    transition: transform 0.1s;
+}
+
+.right{
+    width: 90px;
+    position: absolute;
+    right: -6%;
+    bottom: 42%;
+    margin: -30px;
+    transition: transform 0.1s;
+}
+
+.left:hover,.right:hover{
+    transform: scale(1.2);
+}
+
+
+
+
+@media only screen and (max-width: 1200px) {
+
+    .top-nav{
+        margin-top:1rem;
+    }
+    
+    .top-nav a img{
+        width: 7rem;
+    }
+
+    .container .info{
+
+        font-size: 1.1rem;
+        line-height: 1rem;
+        margin-bottom: 5px;
+    }
+        
+    .card{
+        padding: 30px 30px 10px 30px;
+        letter-spacing: 0.05rem;
+        width: 55vw;
+        height: 35vh;
+        min-height:310px !important;
+    }
+    
+.question{
+
+	font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin-bottom: 0.1rem;
+    padding: 0 10px;
+}
+
+.radio {
+    font-size: 1rem;
+    width: 100%;
+    gap: 1.5rem;
+
+} 
+
+.radio input {
+    max-width: 200px;
+}
+
+
+.radio span {
+    border-radius: 50px;
+    min-width: 80px;
+    height: 100%;
+    padding: 25px;
+
+}
+
+.req{
+	font-size: 1rem;
+	line-height: 1rem;
+	letter-spacing: 0.04rem;
+
+}
+
+.user-info{
+	font-size: 1.15rem;
+	letter-spacing: 0.08rem;
+
+}
+
+.user-input{
+
+    font-size: 1.3rem;
+    width: 300px;
+    height: 50%;
+    margin-bottom: 0.8rem;
+}
+
+
+
+.submit{
+	font-size:1.4rem;
+    height: 4rem;
+    width: 7rem;
+    margin-bottom: 0.5rem;
+    margin-top: 3rem;
+}
+
+
+
+.last{
+    margin-top: 0.1rem;
+    font-size: 1.1rem;
+}
+
+.left{
+    width: 80px;
+    position: absolute;
+    left: -10%;
+    bottom: 42%;
+    margin: -30px;
+}
+
+.right{
+    width: 80px;
+    position: absolute;
+    right: -10%;
+    bottom: 42%;
+    margin: -30px;
+}
+
+
+    
+} 
+
+
+@media only screen and (max-width: 930px) {
+
+    .top-nav{
+        margin-top:0.5rem;
+    }
+    
+    .top-nav a img{
+        width: 5rem;
+    }
+
+    .container .info{
+        font-size: 1rem;
+        line-height: 0.9rem;
+    }
+        
+    .card{
+        padding: 30px 10px 10px 10px;
+        letter-spacing: 0.05rem;
+        width: 80vw;
+        height: 35vh;
+        min-height:310px !important;
+    }
+
+.radio {
+    gap: 1rem;
+
+} 
+
+
+
+
+.radio span {
+    border-radius: 50px;
+    min-width: 70px;
+    height: 70%;
+}
+
+
+
+.user-info{
+	font-size: 1rem;
+}
+
+.user-input{
+
+    font-size: 1.3rem;
+    width: 300px;
+    height: 50%;
+    margin-bottom: 1rem;
+}
+
+
+
+.submit{
+	font-size:1.4rem;
+    height: 4rem;
+    width: 7rem;
+    margin-bottom: 0.5rem;
+    margin-top: 3rem;
+}
+
+
+.last{
+    font-size: 1rem;
+}
+
+}  
+    </style>
+    <title>Assessment</title>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="https://www.goodmind.co/" target="_blank">
+            <img
+            src="https://ik.imagekit.io/GoodMind/logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675345705958"
+            alt="Goodmind"
+          />
+
+        </a>
+    </nav>
+    <div class="count" hidden>11</div>
+    
+    <div class="container">
+        <div class="info">
+            <p>Over the last 2 weeks, how often have you been bothered by the following problems?</p>
+            <p>Please note, all fields are required.</p>
+        </div>
+        <form class="form" action="/result" method="post">
+            <input type="text" name="test" id="test-name" value="OCD" hidden>
+            <input type="text" name="help" id="help-name" value="want" hidden>
+            <input id="clientDate" name="clientDate" type="hidden">
+            <div class="card">
+                <a href="javascript:prevPage()" id="btn_prev">
+                    <img class="left" src="https://ik.imagekit.io/goodmind/left.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669642324729" />
+
+                </a>
+                <div class="q1" hidden><p class="question">Do you have unwanted ideas, images, or impulses, that seem silly, nasty, or horrible?</p><br>
+                    <div class="radio">
+                        <label><input name="q1" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q1" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q1" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q1" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q2" hidden><p class="question">Do you worry excessively about dirt, germs, or chemicals?</p><br>
+                    <div class="radio">
+                        <label><input name="q2" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q2" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q2" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q2" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q3" hidden><p class="question">Are you constantly worried that something bad will happen because you forgot something important like locking the door or turning off appliances?</p><br>
+                    <div class="radio">
+                        <label><input name="q3" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q3" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q3" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q3" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q4" hidden><p class="question">Do you experience shortness of breath?</p><br>
+                    <div class="radio">
+                        <label><input name="q4" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q4" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q4" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q4" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q5" hidden><p class="question">Are you afraid you will act or speak aggressively when you don’t want to?</p><br>
+                    <div class="radio">
+                        <label><input name="q5" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q5" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q5" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q5" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q6" hidden><p class="question">Do you have to check things over and over or repeat actions many times to be sure they are done properly?</p><br>
+                    <div class="radio">
+                        <label><input name="q6" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q6" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q6" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q6" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q7" hidden><p class="question">Do you ever experience “jelly” legs?</p><br>
+                    <div class="radio">
+                        <label><input name="q7" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q7" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q7" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q7" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q8" hidden><p class="question">Are there things you feel you must do excessively or thoughts you must think repeatedly to feel comfortable?</p><br>
+                    <div class="radio">
+                        <label><input name="q8" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q8" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q8" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q8" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q9" hidden><p class="question">Do you wash yourselves or things around you excessively?</p><br>
+                    <div class="radio">
+                        <label><input name="q9" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q9" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q9" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q9" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q10" hidden><p class="question">Do you avoid situations or people you worry about hurting by aggressive words or actions?</p><br>
+                    <div class="radio">
+                        <label><input name="q10" type="radio" value="1" onclick="nextPage()" required/><span>No</span></label>
+                        <label><input name="q10" type="radio" value="2" onclick="nextPage()" required/><span>Rarely</span></label>
+                        <label><input name="q10" type="radio" value="3" onclick="nextPage()" required/><span>Mostly</span></label>
+                        <label><input name="q10" type="radio" value="4" onclick="nextPage()" required/><span>Always</span></label>
+                    </div>
+                </div>
+                <div class="q11" hidden>
+                    <div class="req">Lastly, please submit your mobile number/email address to receive the assessment result. <br> P.S: we don't spam, use or sell this data. Promise.</div>
+                        <div class="contact-num">
+                                <label for="phone" class="user-info">Mobile Number</label> <br>
+                                <input type="tel" class="user-input" id="phone" name="phone" required oninvalid="this.setCustomValidity('Please enter mobile number correctly')"
+                                oninput="this.setCustomValidity('')"  >
+                    </div>
+                    <div class="email">
+                                <label for="email" class="user-info">Email Address</label> <br>
+                                <input type="email" id="email" name="email" class="user-input" required oninvalid="this.setCustomValidity('Please enter email correctly')"
+                                oninput="this.setCustomValidity('')">
+                    </div>
+
+                        <input type="submit" class="submit" id="submit">
+
+                    <p class="last">Please ensure you haven't skipped any options</p>      
+                </div>
+                <a href="javascript:next()" id="btn_next">
+                    <img class="right" src="https://ik.imagekit.io/goodmind/right.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669642325652" />
+
+                </a>
+                
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script>
+        var current_page = 1;
+    var records_per_page = 1;
+    
+    
+    
+    function prevPage()
+    {
+        if (current_page > 1) {
+            document.querySelector(`.q${current_page}`).setAttribute("hidden",true)
+            current_page--;
+            changePage(current_page);
+        }
+    }
+    
+    function nextPage(){
+    
+        next()
+    }
+    
+    function next(){
+        if (current_page < numPages()) {
+            document.querySelector(`.q${current_page}`).setAttribute("hidden",true)
+            current_page++;
+            changePage(current_page);
+        }
+    }
+    
+    
+    
+    function changePage(page)
+    {
+        var btn_next = document.getElementById("btn_next");
+        var btn_prev = document.getElementById("btn_prev");
+    
+        // Validate page
+        if (page < 1) page = 1;
+        if (page > numPages()) page = numPages();
+    
+        let curr = document.querySelector(`.q${page}`);
+        curr.removeAttribute("hidden");
+    
+    
+        if (page == 1) {
+            btn_prev.style.visibility = "hidden";
+        } else {
+            btn_prev.style.visibility = "visible";
+        }
+    
+        if (page == numPages()) {
+            btn_next.style.visibility = "hidden";
+        } else {
+            btn_next.style.visibility = "visible";
+        }
+    
+        
+    
+    }
+    
+    function numPages()
+    {
+        let pag = document.querySelector(".count");
+        return (+pag.innerHTML)
+    }
+    
+    window.onload = function() {
+        changePage(1);
+    };
+    
+    $("#clientDate").val(new Date()); 
+    
+    document.onkeydown = function (event) {
+        switch (event.keyCode) {
+           case 37:
+              prevPage();
+              break;
+           case 39:
+              nextPage();
+              break;
+        }
+     };
+    
+    
+     function myFunction(n) {
+        var popup = document.getElementById(`myPopup${n}`);
+        popup.classList.toggle("show");
+      }
+       </script>
+</body>
+</html>

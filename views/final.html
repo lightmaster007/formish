@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,500;0,700;1,700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        body {
+            max-width: 80%;
+            background-color: #b4dde4;
+        }
+
+        .result {
+            margin-bottom: 30px;
+        }
+
+
+        .col {
+            height: 4rem;
+        }
+
+        .top-nav {
+            margin-top: 1rem;
+        }
+
+        .container {
+            width: 50%;
+            background-color: #faf1e3;
+            padding: 3rem;
+            border-radius: 50px;
+        }
+
+        .form-control {
+            height: 4rem;
+            background-color: #1fb4bb;
+            color: white;
+        }
+
+        .form-control:hover {
+            background-color: #b4dde4;
+        }
+
+        .form-control:focus {
+            background-color: #1fb4bb;
+        }
+
+
+        @media only screen and (max-width: 1000px) {
+
+            body {
+                max-width: 80%;
+            }
+
+            .container {
+                margin: auto !important;
+                /* margin: 20px 10px; */
+                padding: 1.5rem;
+
+            }
+
+            .top-nav {
+                padding-bottom: 0.5rem;
+
+            }
+
+
+
+            .fs-4 {
+                font-size: 1.1rem !important;
+            }
+
+            .form-control {
+                font-size: 0.8rem;
+            }
+
+            a {
+                font-size: 1rem;
+            }
+
+        }
+    </style>
+    <style>
+        * {
+            font-family: 'ubuntu', sans-serif;
+            scroll-behavior: smooth;
+            letter-spacing: 0.05rem;
+        }
+
+        body {
+            max-width: 100%;
+
+            background-color: #b4dde4;
+        }
+
+        .top-nav {
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        .container {
+            background-color: #faf1e3;
+            padding: 3rem;
+            border-radius: 50px;
+
+
+        }
+
+        .row .col {
+            height: 4rem;
+        }
+
+        .form-control {
+            height: 4rem;
+            background-color: #1fb4bb;
+            color: white;
+        }
+
+        .form-control:hover {
+            background-color: #b4dde4;
+        }
+
+        .form-control:focus {
+            background-color: #1fb4bb;
+        }
+
+        @media only screen and (max-width: 1000px) {
+
+            body {
+                max-width: 100%;
+            }
+
+            .container {
+                /* margin-left: 8vw; */
+                width: 85%;
+
+                margin: 20px 30px;
+                padding: 1.5rem;
+
+            }
+
+            .top-nav {
+                padding-bottom: 0.5rem;
+
+            }
+
+            .fs-3 {
+                font-size: 1.2rem !important;
+            }
+
+            .fs-2 {
+                font-size: 1.3rem !important;
+            }
+
+            .form-control {
+                font-size: 0.8rem;
+            }
+
+        }
+    </style>
+    <title>Result</title>
+</head>
+
+<body>
+    <nav class="top-nav text-center">
+        <a href="https://www.goodmind.co/" target="_blank">
+            <img src="https://ik.imagekit.io/GoodMind/logo.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675345705958"
+                alt="Goodmind" class="img-fluid">
+        </a>
+    </nav>
+    <br><br>
+    <p class="fs-4 fw-normal text-center px-3 result">The result has been mailed to you</p>
+    <div class="container">
+        <p class="fs-4 fw-light">Click on the link to schedule your first appointment: <a
+                href="https://goodmind.app/booking/index.html" class="link-info" target="_blank">Book</a></p>
+        <br>
+        <div class="col">
+            <form action="/index" method="get">
+                <button id="btnSubmit" class="btn form-control rounded-5">Take another test</button>
+            </form>
+        </div>
+
+        <script type="application/javascript" src="https://sdki.truepush.com/sdk/v2.0.4/app.js" async></script>
+        <script>
+            var truepush = window.truepush || [];
+
+            truepush.push(function () {
+                truepush.Init({
+                    id: "63cd7e76892d8e034dcd61c5"
+                }, function (error) {
+                    if (error) console.error(error);
+                })
+            })
+        </script>
+</body>
+
+</html>
